@@ -1,0 +1,34 @@
+
+:root{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    background: #263238;
+}
+
+//.container-card{
+//    display: flex;
+//    border-radius: 20px;    //background-color: #f6f6f6;
+//    background-color: rgb(255, 0, 43);
+//    padding: 1.2rem;
+//    width: auto;
+//    height: fit-content;
+//}
+
+.card-title{
+    border-radius: 20px;
+    background-color: #c5c5c5;
+    padding: 1rem; 
+    margin-bottom: 1.2rem;
+    font-size: 24px;
+    font-weight: 500;
+    width: fit-content;
+}

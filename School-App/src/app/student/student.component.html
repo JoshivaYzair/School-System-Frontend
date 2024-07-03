@@ -1,0 +1,167 @@
+<div class="content-student">
+  <div class="container-card" [class.expanded]="isPanelVisible">
+
+    <div class="filter-container">
+
+      <div class="filter-options" >
+        <div class="select-checkbox">
+          <button class="select-box" (click)="toggleFilterList()">
+            <span class="select-text">Add filter</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+  
+        <ul id="filter-list" class="filter-list" [class.show]="filterListVisible">
+          @for (option of filterOptions; track $index) {
+            <li class="option">
+              <input id="{{option}}" type="checkbox">
+              <label for="{{option}}"><span>{{option}}</span></label>
+            </li>
+          }
+        </ul>
+      </div>
+      
+      <button>
+        <i class="fas fa-search"></i>
+      </button>
+      <input type="text" placeholder="Search for a student by name">
+    </div>
+
+    <h3>Student's List</h3>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            @for (dataHead of displayedColumns; track $index) {
+            <th>{{ dataHead }}</th>
+            }
+          </tr>
+        </thead>
+        <tbody >
+          @for (dataBody of paginatedData; track $index) {
+          <tr (click)="studentView(dataBody)">
+            <td data-name="Position">{{ dataBody.position }}</td>
+            <td data-name="Name">{{ dataBody.name }}</td>
+            <td data-name="Weight">{{ dataBody.weight }}</td>
+            <td data-name="Symbol">{{ dataBody.symbol }}</td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="currentPage === 0">
+        Previous
+      </button>
+      <span>Item per Page</span>
+      <select (change)="changePageSize($event)">
+        @for (pageSelector of pageSizeSelector; track $index) {
+        <option [value]="pageSelector">{{ pageSelector }}</option>
+        }
+      </select>.<span>Page {{ currentPage + 1 }} of {{ dataSource.length / pageSize }}</span
+      >
+      <button
+        (click)="nextPage()"
+        [disabled]="(currentPage + 1) * pageSize >= dataSource.length"
+      >
+        Next
+      </button>
+    </div>
+
+    <!--
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Office</th>
+            <th>Age</th>
+            <th>Status</th>
+            <th>Start Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-name="Name">Tanya</td>
+            <td data-name="Position">Technical Officer</td>
+            <td data-name="Office">Gurgaon</td>
+            <td data-name="Age">66</td>
+            <td class="status"><span class="pending">Pending</span></td>
+            <td data-name="Joining Date">2009/01/02</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Deepak</td>
+            <td data-name="Position">Regional Marketing</td>
+            <td data-name="Office">New Delhi</td>
+            <td data-name="Age">27</td>
+            <td class="status"><span class="pending">Pending</span></td>
+            <td data-name="Joining Date">2011/03/17</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Ankit</td>
+            <td data-name="Position">Sales Support</td>
+            <td data-name="Office">Chennai</td>
+            <td data-name="Age">45</td>
+            <td class="status"><span class="approved">Approved</span></td>
+            <td data-name="Joining Date">2011/12/12</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Naveen</td>
+            <td data-name="Position">System Admin</td>
+            <td data-name="Office">Hyderabad</td>
+            <td data-name="Age">33</td>
+            <td class="status"><span class="approved">Approved</span></td>
+            <td data-name="Joining Date">2009/02/27</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Priya</td>
+            <td data-name="Position">Sales Assistant</td>
+            <td data-name="Office">Hyderabad</td>
+            <td data-name="Age">24</td>
+            <td class="status"><span class="approved">Approved</span></td>
+            <td data-name="Joining Date">2012/03/29</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Tanu</td>
+            <td data-name="Position">System Lead</td>
+            <td data-name="Office">Bengaluru</td>
+            <td data-name="Age">31</td>
+            <td class="status"><span class="pending">Pending</span></td>
+            <td data-name="Joining Date">2013/03/03</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Manish</td>
+            <td data-name="Position">Senior Java Developer</td>
+            <td data-name="Office">Chennai</td>
+            <td data-name="Age">51</td>
+            <td class="status"><span class="approved">Approved</span></td>
+            <td data-name="Joining Date">2008/10/26</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Arti</td>
+            <td data-name="Position">Support Assistant</td>
+            <td data-name="Office">Pune</td>
+            <td data-name="Age">24</td>
+            <td class="status"><span class="decline">Decline</span></td>
+            <td data-name="Joining Date">2008/12/13</td>
+          </tr>
+          <tr>
+            <td data-name="Name">Aditi</td>
+            <td data-name="Position">Team Leader</td>
+            <td data-name="Office">Noida</td>
+            <td data-name="Age">55</td>
+            <td class="status"><span class="decline">Decline</span></td>
+            <td data-name="Joining Date">2010/09/20</td>
+          </tr>
+        </tbody>
+      </table>
+      -->
+  </div>
+
+  @if (isPanelVisible) {
+    <div class="container-card-side-panel">
+      <router-outlet/>
+    </div>
+  }
+</div>

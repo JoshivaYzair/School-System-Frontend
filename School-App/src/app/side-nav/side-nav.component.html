@@ -1,0 +1,47 @@
+
+<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+
+    @if (!collapsed) {
+        <div class="logo-container">
+            <button class="logo" (click)="toggleCollapse()">S</button>
+        </div>
+    }@else {
+        <div class="logo-expanded" (click)="toggleCollapse()">
+            <button>
+                <img src="instagram.png" alt="" >
+            </button>
+        </div>
+    }
+
+    <div class="profile">
+        <div class="picture" [ngClass]="{'picture-expanded': collapsed}">
+            <img src="user.jpg" alt="">
+        </div>
+        <div class="user-details">
+            @if (collapsed) {
+                <p>Teacher</p>
+                <p><strong>Juan Pablo tyron</strong></p>
+            }
+        </div>
+    </div>
+
+    <ul class="sidenav-nav" [ngClass]="collapsed ? 'sideNav-expanded' : ''">
+        @for (data of navData; track $index) {
+            <div class="sidenav-menu">
+                <p>{{data.type}}</p>
+            </div>
+            @for (item of data.items; track $index) {
+                <li class="sidenav-nav-item">
+                    <a class="sidenav-nav-link" 
+                        [routerLink]="[item.routeLink]"
+                        routerLinkActive="active">
+                            <i class="sidenav-link-icon" [class]="item.icon"></i>
+                            <span class="sidenav-link-text">
+                                @if (collapsed) { {{item.label}} }
+                            </span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>

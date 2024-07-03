@@ -1,0 +1,278 @@
+.container-card {
+  border-radius: 20px;
+  background-color: #f2f2f2;
+  padding: 1.2rem;
+  width: 100%;
+  height: 84.4dvh;
+  max-height: 84.4dvh;
+  overflow-y: auto;
+
+  .container-card.expanded{
+    width: 60%;
+  }
+}
+
+.table-container {
+  max-width: 100%;
+  max-height: 65.9%; 
+  overflow: auto; 
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.container-card-side-panel{
+  width: 40%;
+  border-radius: 20px;
+  background-color: #f6f6f6;
+  padding: 1.2rem;
+}
+.content-student {
+  display: flex;
+  width: 100%;
+  gap: 0.5vw;
+}
+
+.filter-container{
+  display: flex;
+  align-items: center;
+  margin-top: .2rem;
+  margin-bottom: 1rem;
+
+  .select-checkbox{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    width: 9rem;
+    height: 3.2rem;
+
+    .select-box{
+      color: #8a8a8a;
+      font-size: 21px;
+      width: 100%;
+      padding-left: .5rem;
+      i{
+        padding-left: .7rem;
+        font-size: 15px;
+      }
+    }
+    .select-box:hover{
+      background-color: #e8e8e8;
+    }
+  }
+
+  .filter-options{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .filter-list{
+      display: none; 
+      position: absolute;
+      margin-top: .5rem;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      z-index: 5;
+      padding: 0;
+      list-style: none;
+      background: #132d4a;
+      
+      .option{
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        color: #8a8a8a;
+        span{
+          padding-left: 1rem;
+        }
+      }
+      
+      background-color: #ffffff;
+      list-style: none;
+      input{
+        width: 20px;
+      }
+    }
+
+    .filter-list.show {
+      display: block;
+    }
+  }
+
+  button{
+    border: none;
+    width: 3.2rem;
+    height: 3.2rem;
+    background-color: #fcfafa;
+    color: #8a8a8a;
+    font-size: 20px;
+  }
+  input{
+    font-size: 20px;
+    color: #8a8a8a;
+    border: none;
+    height: 3.2rem;
+    background-color: #fcfafa;
+    width: 100%;
+    padding-left: .2rem
+  }
+  input:focus{
+    outline: none;
+  }
+
+  button:hover{
+    background-color: #e8e8e8;
+  }
+}
+
+table {
+  border-spacing: 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  font-size: 18px;
+}
+
+thead th {
+  color: #585858;
+  text-align: left;
+  background-color: #f7f9fc;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody tr{
+  cursor: pointer;
+}
+
+thead th,
+tbody td {
+  padding: 30px;
+  border: 0;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background-color: #dddddd;
+}
+
+
+tbody tr:hover td:first-child {
+  border-left-color: #838383;
+}
+
+td.status {
+  text-align: center;
+}
+
+//Bordes de status
+td.status span {
+  font-size: 16px;
+  border-radius: 3px;
+  padding: 6px;
+  font-weight: 700;
+}
+
+td.status span.approved {
+  color: #ffffff;
+  background-color: #00c455;
+}
+
+td.status span.decline {
+  color: #ffffff;
+  background-color: #f13426;
+}
+
+td.status span.pending {
+  color: #132d4a;
+  background-color: #ebf0f5;
+}
+
+@media (max-width: 706px) {
+  
+  table thead {
+    display: none;
+  }
+
+  table tbody {
+    //display: flex;
+    display: block;
+    //flex-wrap: wrap;
+    padding: 4px;
+  }
+
+  table tbody tr,
+  table tbody td {
+    display: block;
+    border: 0;
+    box-sizing: border-box
+  }
+
+  table tbody td {
+    padding: 5px;
+    text-align: center;
+  }
+
+  table tbody td:before {
+    content: attr(data-name);
+    width: 100px;
+    display: inline-block;
+    text-transform: capitalize;
+    font-weight: Bold;
+  }
+
+
+  table tbody td.status {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  table tbody tr {
+    position: relative;
+    border: 1px solid #e7e7e7;
+    padding: 8px;
+    margin: 4px 0;
+  }
+
+  .pagination-controls{
+    display: block;
+    
+  }
+
+  .pagination-controls button{
+    display: block;
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 5rem;
+}
+
+.pagination-controls button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #e2e2e2;
+}
+
+.pagination-controls button:hover {
+  background-color: #989898;
+}
+
+.pagination-controls span {
+  margin: 0 10px;
+  font-weight: 600;
+}
